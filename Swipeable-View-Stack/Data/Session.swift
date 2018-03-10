@@ -4,11 +4,12 @@ class Session {
 	var cards: [Card]
 	private var correct = 0
   private var wrong = 0
+	private var remaining : Int
 	private var totalCards : Int
 
 	init(dataset : Dataset) {
 		self.cards = dataset.getCardsToQuiz()
-		self.totalCards = self.cards.count
+		self.totalCards = self.remaining = self.cards.count
 	}
 
 	func registerCorrect() {
@@ -18,6 +19,7 @@ class Session {
 		if correct + wrong < totalCards {
 			correct = correct + 1
 		}
+		self.remaining = self.remaining - 1;
 	}
 
 	func registerWrong() {
@@ -31,7 +33,7 @@ class Session {
 	}
 
 	func cardsRemaining() -> Int {
-		return self.totalCards - self.correct
+		return self.remaining
 	}
 
 	func getScore() -> Int {
