@@ -1,0 +1,11 @@
+Q: Jak po nordycku nazywa się pizza?
+A: Pizza
+Q: Jak po nordycku nazywa się programista?
+A: Programmerer
+Q: Co znaczy 'datamaskin'? 
+A: Komputer
+Q: Przetłumacz 'klawiatura'
+A: tastatur
+Q: Co znaczy 'mat'?
+A: Jedzenie
+
