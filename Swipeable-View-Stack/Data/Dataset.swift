@@ -72,6 +72,8 @@ class Dataset {
 			}
 		}
 
+		result.sort(by: { $0.nextDate.compare($1.nextDate) == .orderedAscending })
+
 		return result;
 	}
 
