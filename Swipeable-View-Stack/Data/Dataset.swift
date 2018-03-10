@@ -51,15 +51,28 @@ class Dataset {
 		self.cards = loadedCards;
 	}
 
-	func changeStatus(newStatus: Bool) {
+	func changeStatus(newStatus: Bool, totalTime: Double) {
 		self.status = newStatus;
 
 		if newStatus == true {
 			self.cards = self.cards.map {
-				$0.nextDate = Date()
+				$0.resetProgress(totalTime: totalTime)
 				return $0
 			}
 		}
+	}
+
+	func getCardsToQuiz() -> [Card] {
+		var result : Array<Card> = []
+
+		let currentDate  = Date()
+		for card in self.cards {
+			if card.nextDate <= currentDate {
+				result.append(card);
+			}
+		}
+
+		return result;
 	}
 
 	func toString() -> String {
