@@ -9,7 +9,8 @@ class Session {
 
 	init(dataset : Dataset) {
 		self.cards = dataset.getCardsToQuiz()
-		self.totalCards = self.remaining = self.cards.count
+		self.totalCards = self.cards.count
+		self.remaining = self.cards.count
 	}
 
 	func registerCorrect() {
