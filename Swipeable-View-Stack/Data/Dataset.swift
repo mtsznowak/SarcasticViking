@@ -12,12 +12,15 @@ class Dataset {
   var status = false
 	var cards: [Card] = []
 	var examDate: Date?
+	let name: String
 
-	init(cards: [Card]) {
+	init(cards: [Card], name: String) {
 		self.cards = cards
+		self.name = name
 	}
 
 	init(fileName: String) {
+		self.name = fileName
 		var loadedCards : Array<Card> = [];
 		if let path = Bundle.main.path(forResource: fileName, ofType: "txt") {
 			do {
