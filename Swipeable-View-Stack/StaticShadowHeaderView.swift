@@ -13,6 +13,7 @@ class StaticShadowHeaderView: UIView, NibView {
 
     @IBOutlet private weak var backgroundContainerView: UIView!
 
+    var viewController: UIViewController?
     /// Shadow View
     private weak var shadowView: UIView?
 
@@ -54,7 +55,7 @@ class StaticShadowHeaderView: UIView, NibView {
     }
 
     @IBAction func abandon(_ sender: Any) {
-        
+        viewController?.dismiss(animated: true, completion: nil)
     }
     private func applyShadow(width: CGFloat, height: CGFloat) {
         if let shadowView = shadowView {

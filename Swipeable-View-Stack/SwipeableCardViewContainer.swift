@@ -112,7 +112,25 @@ extension SwipeableCardViewContainer {
     func didBeginSwipe(onView view: SwipeableView) {
         // React to Swipe Began?
     }
-
+    func didChangeSwipe(card: SwipeableView, direction: SwipeDirection?, percentage: Float) {
+        if let card = card as? QuestionAnswerCardView  {
+            
+            if let direction = direction {
+                if direction.horizontalPosition == .left {
+                    card.setTopBarColor(color: .red)
+                }else if direction.horizontalPosition == .right {
+                    card.setTopBarColor(color: .green)
+                }else {
+                    card.setTopBarColor(color: QuestionAnswerCardView.barColor)
+                }
+            }else {
+                card.setTopBarColor(color: QuestionAnswerCardView.barColor)
+            }
+            
+            
+        }
+        
+    }
     func didEndSwipe(onView view: SwipeableView) {
         guard let dataSource = dataSource else {
             return
@@ -142,5 +160,6 @@ extension SwipeableCardViewContainer {
 
         }
     }
+    
 
 }

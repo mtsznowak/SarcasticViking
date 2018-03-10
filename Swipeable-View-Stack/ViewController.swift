@@ -8,15 +8,46 @@
 
 import UIKit
 
-class ViewController: UIViewController, SwipeableCardViewDataSource {
-
+class ViewController: UIViewController, SwipeableCardViewDataSource, VikingManagerDelegate {
+    @IBOutlet weak var headerView: StaticShadowHeaderView!
     @IBOutlet private weak var swipeableCardView: SwipeableCardViewContainer!
 
+    @IBOutlet weak var vikingLabel: UILabel!
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         swipeableCardView.dataSource = self
+        headerView.viewController = self
+        VikingManager.sharedInstance.delegate = self
     }
+    override func viewWillAppear(_ animated: Bool) {
+        view.setNeedsLayout()
+        
+        VikingManager.sharedInstance.tellVikingSomethingHappened(event: .Hello)
+        
+    }
+    func vikingFinishesSaying() {
+        UIView.transition(with: self.vikingLabel,
+                          duration: 0.25,
+                          options: .transitionCrossDissolve,
+                          animations: { [weak self] in
+                            self?.vikingLabel.isHidden = true
+            }, completion: nil)
+    }
+    func vikingSaysSomething(text: String) {
+        UIView.transition(with: self.vikingLabel,
+                          duration: 0.25,
+                          options: .transitionCrossDissolve,
+                          animations: { [weak self] in
+                            self?.vikingLabel.isHidden = false
+                            self?.vikingLabel.text = text
+                            self?.vikingLabel.sizeToFit()
+            }, completion: nil)
+    }
+
 
 }
 
@@ -30,9 +61,9 @@ extension ViewController {
 
     func card(forItemAtIndex index: Int) -> SwipeableCardViewCard {
         let viewModel = viewModels[index]
-        let cardView = SampleSwipeableCard()
+        let cardView = QuestionAnswerCardView()
         cardView.viewModel = viewModel
-        return cardView
+        return cardView        
     }
 
     func viewForEmptyCards() -> UIView? {
@@ -43,37 +74,22 @@ extension ViewController {
 
 extension ViewController {
 
-    var viewModels: [SampleSwipeableCellViewModel] {
+    var viewModels: [Card] {
 
-        let hamburger = SampleSwipeableCellViewModel(title: "McDonalds",
-                                                     subtitle: "Hamburger",
-                                                     color: UIColor(red:0.96, green:0.81, blue:0.46, alpha:1.0),
-                                                     image: #imageLiteral(resourceName: "hamburger"))
+        let hamburger = Card(question: "McDonalds", answer: "Hamburger")
 
-        let panda = SampleSwipeableCellViewModel(title: "Panda",
-                                                  subtitle: "Animal",
-                                                  color: UIColor(red:0.29, green:0.64, blue:0.96, alpha:1.0),
-                                                  image: #imageLiteral(resourceName: "panda"))
+        let panda = Card(question: "Panda", answer: "Animal")
 
-        let puppy = SampleSwipeableCellViewModel(title: "Puppy",
-                                                  subtitle: "Pet",
-                                                  color: UIColor(red:0.29, green:0.63, blue:0.49, alpha:1.0),
-                                                  image: #imageLiteral(resourceName: "puppy"))
 
-        let poop = SampleSwipeableCellViewModel(title: "Poop",
-                                                  subtitle: "Smelly",
-                                                  color: UIColor(red:0.69, green:0.52, blue:0.38, alpha:1.0),
-                                                  image: #imageLiteral(resourceName: "poop"))
+        let puppy = Card(question: "Puppy", answer: "Pet")
 
-        let robot = SampleSwipeableCellViewModel(title: "Robot",
-                                                  subtitle: "Future",
-                                                  color: UIColor(red:0.90, green:0.99, blue:0.97, alpha:1.0),
-                                                  image: #imageLiteral(resourceName: "robot"))
+        let poop = Card(question: "Poop", answer: "Smelly")
 
-        let clown = SampleSwipeableCellViewModel(title: "Clown",
-                                                  subtitle: "Scary",
-                                                  color: UIColor(red:0.83, green:0.82, blue:0.69, alpha:1.0),
-                                                  image: #imageLiteral(resourceName: "clown"))
+        let robot = Card(question: "Robot", answer: "Future")
+
+
+        let clown = Card(question: "Clown", answer: "Scary")
+
 
         return [hamburger, panda, puppy, poop, robot, clown]
     }

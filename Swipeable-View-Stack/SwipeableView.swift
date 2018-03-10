@@ -100,6 +100,9 @@ class SwipeableView: UIView {
             transform = CATransform3DRotate(transform, rotationAngle, 0, 0, 1)
             transform = CATransform3DTranslate(transform, panGestureTranslation.x, panGestureTranslation.y, 0)
             layer.transform = transform
+            
+            delegate?.didChangeSwipe(card: self, direction: self.dragDirection, percentage: Float(self.dragPercentage))
+
         case .ended:
             endedPanAnimation()
             layer.shouldRasterize = false
@@ -109,7 +112,7 @@ class SwipeableView: UIView {
         }
     }
 
-    private var dragDirection: SwipeDirection? {
+    var dragDirection: SwipeDirection? {
         let normalizedDragPoint = panGestureTranslation.normalizedDistanceForSize(bounds.size)
         return SwipeDirection.allDirections.reduce((distance: CGFloat.infinity, direction: nil), { closest, direction -> (CGFloat, SwipeDirection?) in
             let distance = direction.point.distanceTo(normalizedDragPoint)
@@ -149,6 +152,7 @@ class SwipeableView: UIView {
             translationAnimation?.toValue = NSValue(cgPoint: animationPointForDirection(dragDirection))
             layer.pop_add(translationAnimation, forKey: "swipeTranslationAnimation")
             self.delegate?.didEndSwipe(onView: self)
+            
         } else {
             resetCardViewPosition()
         }
