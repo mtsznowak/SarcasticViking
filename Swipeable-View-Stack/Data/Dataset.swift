@@ -10,7 +10,8 @@ import Foundation
 
 class Dataset {
   var status = false
-	var cards: [Card]
+	var cards: [Card] = []
+	var examDate: Date?
 
 	init(cards: [Card]) {
 		self.cards = cards
@@ -39,7 +40,7 @@ class Dataset {
 						answer.remove(at: answer.startIndex)
 						answer.remove(at: answer.startIndex)
 
-						let card = Card(question: question, answer: answer)
+						let card = Card(dataset: self, question: question, answer: answer)
 						loadedCards.append(card)
 					}
 				}
@@ -51,15 +52,21 @@ class Dataset {
 		self.cards = loadedCards;
 	}
 
-	func changeStatus(newStatus: Bool, totalTime: Double) {
+	func changeStatus(newStatus: Bool, examDate: Date) {
+		self.examDate = examDate
 		self.status = newStatus;
 
 		if newStatus == true {
 			self.cards = self.cards.map {
-				$0.resetProgress(totalTime: totalTime)
+				$0.resetProgress()
 				return $0
 			}
 		}
+	}
+
+	// returns time to exam in seconds : Double
+	func timeToExam() -> Double? {
+		return self.examDate?.timeIntervalSinceNow;
 	}
 
 	func getCardsToQuiz() -> [Card] {
