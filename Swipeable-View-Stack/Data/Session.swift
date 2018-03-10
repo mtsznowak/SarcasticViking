@@ -36,7 +36,7 @@ class Session {
 
 	func getScore() -> Int {
 		if correct + wrong > 0 {
-				return correct / (correct + wrong) * 100;
+				return Int(Double(correct) / Double(correct + wrong) * 100.0);
 		}
 		return 0;
 	}
