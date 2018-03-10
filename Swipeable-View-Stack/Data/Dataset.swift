@@ -9,12 +9,12 @@
 import Foundation
 
 class Dataset {
+  var status = false
 	var cards: [Card]
 
 	init(cards: [Card]) {
 		self.cards = cards
 	}
-
 
 	init(fileName: String) {
 		var loadedCards : Array<Card> = [];
@@ -49,5 +49,25 @@ class Dataset {
 		}
 
 		self.cards = loadedCards;
+	}
+
+	func changeStatus(newStatus: Bool) {
+		self.status = newStatus;
+
+		if newStatus == true {
+			self.cards = self.cards.map {
+				$0.nextDate = Date()
+				return $0
+			}
+		}
+	}
+
+	func toString() -> String {
+		var cardsString = ""
+		for card in self.cards {
+			cardsString += card.toString()
+			cardsString += " "
+		}
+		return "status: " + String(self.status) + ", cards: " + cardsString
 	}
 }

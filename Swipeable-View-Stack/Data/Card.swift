@@ -8,13 +8,22 @@
 
 import Foundation
 class Card {
-    
+
     var question: String
     var answer: String
+    var nextDate: Date
 
     init(question: String, answer: String) {
         self.question = question
         self.answer = answer
+        self.nextDate = Date()
     }
-    
+
+    func toString() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        let dateString = dateFormatter.string(from: self.nextDate)
+        return "Card[q: " + question + ", a:" + answer + ", nextDate:" + dateString + "]";
+    }
+
 }
