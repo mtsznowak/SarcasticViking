@@ -30,6 +30,10 @@ class Session {
 		}
 	}
 
+	func cardsRemaining() -> Int {
+		return self.totalCards - self.correct
+	}
+
 	func getScore() -> Int {
 		if correct + wrong > 0 {
 				return correct / (correct + wrong) * 100;
