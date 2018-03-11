@@ -39,19 +39,20 @@ Poniżej przedstawiony jest wersja aplikacji, która powstała podczas hackathon
 
 Pokazuje zestawy fiszek, które są aktywne (tj. termin egzaminu został wprowadzony) oraz nieaktywne (możliwe do aktywacji.
 
-[Fiszki](https://i.imgur.com/Kcwaa0S.png)
+![Fiszki](https://i.imgur.com/Kcwaa0S.png)
 
 Po kliknięciu na nieaktywną fiszkę uzytkownikowi pokazywany jest ekran wyboru daty egzaminu:
 
-[Data](https://i.imgur.com/AxmTjQD.png)
+![Data](https://i.imgur.com/AxmTjQD.png)
 
 Po kliknięciu na aktywną fiszkę, prezentowany jest ekran nauki:
 
-[Nauka](https://i.imgur.com/CaOm2GA.png)
+![Nauka](https://i.imgur.com/CaOm2GA.png)
 
 Użytkownik ma możliwość pokazania odpowiedzi przez przesunięcie fiszki w dół. Następnie w stylu aplikacji Tinder - przesuwa całą fiszkę w lewo lub w prawo deklarując, że zna odpowiedż na pytanie lub nie
-![Accepted](https://i.imgur.com/53YLWYT.png) ![Rejected](https://i.imgur.com/tS75aZ5.png)
+Odpowiedź zapamiętana         |  Odpowiedź nie znana
+:-------------------------:|:-------------------------:
+![Accepted](https://i.imgur.com/53YLWYT.png) | ![Rejected](https://i.imgur.com/tS75aZ5.png)
 
 Po niektórych odpowiedziach Wiking znajdujące się na dole ekranu sarkastycznie komentuje uzyskany wynik:
-[Smieszny tekst](https://i.imgur.com/u9nc1Z3.png)
-
+![Smieszny tekst](https://i.imgur.com/u9nc1Z3.png) 
