@@ -2,9 +2,8 @@
 //  SwipeableStackView.swift
 //  Swipeable-View-Stack
 //
-//  Created by Phill Farrugia on 10/21/17.
-//  Copyright © 2017 Phill Farrugia. All rights reserved.
-//
+//  Created by Piotrek on 10.03.2018.
+//  Copyright © 2018 Piotr Knapczyk. All rights reserved.
 
 import UIKit
 
@@ -19,6 +18,7 @@ class SwipeableCardViewContainer: UIView, SwipeableViewDelegate {
             reloadData()
         }
     }
+    
 
     var delegate: SwipeableCardViewDelegate?
 
@@ -135,6 +135,7 @@ extension SwipeableCardViewContainer {
         guard let dataSource = dataSource else {
             return
         }
+        delegate?.swipedInDirection(direction: view.dragDirection)
 
         // Remove swiped card
         view.removeFromSuperview()

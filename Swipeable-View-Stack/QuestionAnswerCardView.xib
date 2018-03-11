@@ -11,9 +11,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="QuestionAnswerCardView" customModule="Swipeable_View_Stack" customModuleProvider="target">
             <connections>
+                <outlet property="answerLabel" destination="DUX-iO-XRv" id="Une-RG-rdQ"/>
                 <outlet property="backgroundContainerView" destination="8nJ-Dy-SiT" id="4UI-7X-JiD"/>
                 <outlet property="gestureRecognizer" destination="mZ7-iu-EGf" id="sGs-tO-Rd4"/>
                 <outlet property="heightConstraint" destination="5QR-ZD-ttn" id="73n-wW-Txe"/>
+                <outlet property="questionLabel" destination="bc6-2T-asH" id="S0f-vf-g42"/>
                 <outlet property="topBar" destination="r2l-uu-D4f" id="zTn-yx-Mo8"/>
             </connections>
         </placeholder>

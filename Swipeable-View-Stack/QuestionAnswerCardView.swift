@@ -3,8 +3,8 @@
 //  Swipeable-View-Stack
 //
 //  Created by Piotrek on 10.03.2018.
-//  Copyright © 2018 Phill Farrugia. All rights reserved.
-//
+//  Copyright © 2018 Piotr Knapczyk. All rights reserved.
+
 
 import UIKit
 
@@ -18,6 +18,8 @@ class QuestionAnswerCardView: SwipeableCardViewCard, ShelfStateMangerDelegate, U
     @IBOutlet weak var topBar: UIView!
     /// Shadow View
     private weak var shadowView: UIView?
+    @IBOutlet weak var questionLabel: UILabel!
+    @IBOutlet weak var answerLabel: UILabel!
     
     /// Inner Margin
     private static let kInnerMargin: CGFloat = 20.0
@@ -51,6 +53,9 @@ class QuestionAnswerCardView: SwipeableCardViewCard, ShelfStateMangerDelegate, U
             shelfManager = ShelfStateManager(limit: 100, constraint: heightConstraint, view: self.backgroundContainerView)
             shelfManager?.delegate = self
             setTopBarColor(color: QuestionAnswerCardView.barColor)
+            
+            questionLabel.text = viewModel?.question
+            answerLabel.text = viewModel?.answer
             
         }
     }

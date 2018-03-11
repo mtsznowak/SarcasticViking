@@ -1,10 +1,10 @@
 //
 //  ShelfStateManager.swift
-//  Just Rain
+//  Swipeable-View-Stack
 //
-//  Created by Piotrek on 19.12.2017.
-//  Copyright © 2017 IdeaStudio. All rights reserved.
-//
+//  Created by Piotrek on 10.03.2018.
+//  Copyright © 2018 Piotr Knapczyk. All rights reserved.
+
 
 import UIKit
 enum ShelfState {

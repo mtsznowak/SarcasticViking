@@ -2,9 +2,9 @@
 //  SwipeableCardViewDataSource.swift
 //  Swipeable-View-Stack
 //
-//  Created by Phill Farrugia on 10/21/17.
-//  Copyright © 2017 Phill Farrugia. All rights reserved.
-//
+//  Created by Piotrek on 10.03.2018.
+//  Copyright © 2018 Piotr Knapczyk. All rights reserved.
+
 
 import UIKit
 
@@ -35,3 +35,5 @@ protocol SwipeableCardViewDataSource: class {
     func viewForEmptyCards() -> UIView?
 
 }
+
+
