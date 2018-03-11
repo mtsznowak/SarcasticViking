@@ -2,9 +2,8 @@
 //  SwipeableStackView.swift
 //  Swipeable-View-Stack
 //
-//  Created by Phill Farrugia on 10/21/17.
-//  Copyright © 2017 Phill Farrugia. All rights reserved.
-//
+//  Created by Piotrek on 10.03.2018.
+//  Copyright © 2018 Piotr Knapczyk. All rights reserved.
 
 import UIKit
 
@@ -19,6 +18,7 @@ class SwipeableCardViewContainer: UIView, SwipeableViewDelegate {
             reloadData()
         }
     }
+    
 
     var delegate: SwipeableCardViewDelegate?
 
@@ -112,11 +112,30 @@ extension SwipeableCardViewContainer {
     func didBeginSwipe(onView view: SwipeableView) {
         // React to Swipe Began?
     }
-
+    func didChangeSwipe(card: SwipeableView, direction: SwipeDirection?, percentage: Float) {
+        if let card = card as? QuestionAnswerCardView  {
+            
+            if let direction = direction {
+                if direction.horizontalPosition == .left {
+                    card.setTopBarColor(color: .red)
+                }else if direction.horizontalPosition == .right {
+                    card.setTopBarColor(color: .green)
+                }else {
+                    card.setTopBarColor(color: QuestionAnswerCardView.barColor)
+                }
+            }else {
+                card.setTopBarColor(color: QuestionAnswerCardView.barColor)
+            }
+            
+            
+        }
+        
+    }
     func didEndSwipe(onView view: SwipeableView) {
         guard let dataSource = dataSource else {
             return
         }
+        delegate?.swipedInDirection(direction: view.dragDirection)
 
         // Remove swiped card
         view.removeFromSuperview()
@@ -142,5 +161,6 @@ extension SwipeableCardViewContainer {
 
         }
     }
+    
 
 }

@@ -2,9 +2,9 @@
 //  StaticShadowHeaderView.swift
 //  Swipeable-View-Stack
 //
-//  Created by Phill Farrugia on 10/21/17.
-//  Copyright © 2017 Phill Farrugia. All rights reserved.
-//
+//  Created by Piotrek on 10.03.2018.
+//  Copyright © 2018 Piotr Knapczyk. All rights reserved.
+
 
 import UIKit
 import CoreMotion
@@ -12,7 +12,27 @@ import CoreMotion
 class StaticShadowHeaderView: UIView, NibView {
 
     @IBOutlet private weak var backgroundContainerView: UIView!
-
+    @IBOutlet weak var successLabel: UILabel!
+    @IBOutlet weak var cardsLeftLabel: UILabel!
+    
+    var viewController: UIViewController?
+    
+    var successPercentage: Int = 0 {
+        didSet {
+            successLabel.text = "\(successPercentage)% in session"
+        }
+    }
+    var cardsLeft: Int = 0 {
+        didSet {
+            if cardsLeft == 1 {
+                cardsLeftLabel.text = "\(cardsLeft) card left"
+            }else {
+                cardsLeftLabel.text = "\(cardsLeft) cards left"
+            }
+        }
+        
+    }
+    
     /// Shadow View
     private weak var shadowView: UIView?
 
@@ -54,7 +74,7 @@ class StaticShadowHeaderView: UIView, NibView {
     }
 
     @IBAction func abandon(_ sender: Any) {
-        
+        viewController?.dismiss(animated: true, completion: nil)
     }
     private func applyShadow(width: CGFloat, height: CGFloat) {
         if let shadowView = shadowView {

@@ -12,6 +12,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="StaticShadowHeaderView" customModule="Swipeable_View_Stack" customModuleProvider="target">
             <connections>
                 <outlet property="backgroundContainerView" destination="mjb-9d-xPy" id="iDe-WS-5Io"/>
+                <outlet property="cardsLeftLabel" destination="zwB-B0-kEp" id="GC9-Va-Tot"/>
+                <outlet property="successLabel" destination="mLY-1G-Pag" id="QnI-1P-mzi"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
